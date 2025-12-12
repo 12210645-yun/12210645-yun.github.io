@@ -1,0 +1,62 @@
+body{
+    height: 200vh;
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
+    background: #642f2f;
+    margin: 50px;
+
+}
+h1{
+    border-width: 3px;
+    border-color: bisque;
+    border-style: solid;
+    padding: 20px;
+    margin: 50px 100px 150px 200px;
+    border-radius: 0 0 40px 40px;
+    background-color: #7e7c7c;
+}
+.photo img{
+    max-width: 100%;
+    height: auto;
+}
+
+.photo img:hover{
+    filter: grayscale(100%);
+    max-width: 120%;
+}
+
+.container{
+    width: 800px;
+    margin: 0 auto;
+}
+.photo{
+    width: 160px;
+    margin: 0 auto 50px;
+    /* 圖片居中且距離下方50px */
+    overflow: hidden;
+    border-radius: 50%;
+}
+.name{
+    text-align: center;
+}
+.top{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+    /* 區塊陰影，X位移,Y位移 模糊程度 顏色 */
+}
+
+.work-item{
+    border: 1px solid rgb(255, 255, 255);
+    padding: 20px;
+}
+.works{
+    display: flex;
+    justify-content: center;
+}
