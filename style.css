@@ -1,62 +1,225 @@
-body{
-    height: 200vh;
-    color: rgb(255, 255, 255);
+body {
     font-family: sans-serif;
-    background: #642f2f;
-    margin: 50px;
-
-}
-h1{
-    border-width: 3px;
-    border-color: bisque;
-    border-style: solid;
-    padding: 20px;
-    margin: 50px 100px 150px 200px;
-    border-radius: 0 0 40px 40px;
-    background-color: #7e7c7c;
-}
-.photo img{
-    max-width: 100%;
-    height: auto;
+    color: #333;
+    background-color: #574c42; 
+    margin: 0; 
+    padding-bottom: 50px; 
 }
 
-.photo img:hover{
-    filter: grayscale(100%);
-    max-width: 120%;
-}
-
-.container{
-    width: 800px;
+.container {
+    max-width: 1000px;
+    width: 90%;
     margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgb(192, 174, 156); 
+    overflow: hidden;
 }
-.photo{
+
+.banner-box {
+    width: 100%;
+    height: 250px; /* 設定橫幅高度，可依喜好調整 */
+    background-color: #574c42;
+    display: flex;
+    justify-content: center; /* 圖片水平置中 */
+    align-items: center;     /* 圖片垂直置中 */
+}
+
+.banner-box img {
+    height: 80%;       /* 圖片高度佔橫幅的 80% (留一點邊距) */
+    width: auto;       /* 寬度自動調整，保持比例 */
+    object-fit: contain; /* 確保圖片完整顯示，不會被裁切 */
+}
+
+.photo img {
     width: 160px;
-    margin: 0 auto 50px;
-    /* 圖片居中且距離下方50px */
+    height: 160px;
+    margin: 0 auto;
+    object-fit: cover;
     overflow: hidden;
     border-radius: 50%;
 }
-.name{
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-}
-.top{
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-    width: 100px;
-    height: 100px;
-    background-color: antiquewhite;
-    border-radius: 50%;
-    text-align: center;
-    box-shadow: 0 0 10px rgb(255, 255, 255);
-    /* 區塊陰影，X位移,Y位移 模糊程度 顏色 */
+    padding: 40px 40px;
 }
 
-.work-item{
-    border: 1px solid rgb(255, 255, 255);
-    padding: 20px;
+.works {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
-.works{
+
+.work-item {
+    width: 300px;
+    margin: 10px;
+    position: relative;
+}
+
+.work-item img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.overlay {
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.work-item:hover .overlay {
+    opacity: 1;
+}
+
+.work-item:hover img {
+    filter: blur(3px);
+}
+
+.works2 {
+    display: grid; /* 啟動網格模式 */
+    gap: 10px;     /* 設定圖片之間的間距 */
+    /* 定義網格區域：3欄 x 3列 */
+    /* w3 佔據了右上角與右中位置，形成大圖 */
+    grid-template-areas: 
+        'w1 w3 w3'
+        'w2 w3 w3'
+        'w4 w5 w6'
+        'w7 w8 w9';
+    padding: 0 40px 40px 40px;
+}
+
+/* 讓圖片填滿格子並保持比例 */
+.works2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 設定每個項目的位置 */
+.x1 {
+    grid-area: w1; /* 左上 */
+}
+
+.x2 {
+    grid-area: w2; /* 左中 */
+}
+
+.x3 {
+    grid-area: w3; /* 右邊的大區塊 (佔據 2x2 格子) */
+}
+
+.x4 {
+    grid-area: w4; /* 左下 */
+}
+
+.x5 {
+    grid-area: w5; /* 中下 */
+}
+
+.x6 {
+    grid-area: w6; /* 右下 */
+}
+.x7 {
+    grid-area: w7;
+}
+.x8 {
+    grid-area: w8; 
+}
+.x9 {
+    grid-area: w9; 
+}
+
+
+.social a {
+    display: inline-block;      
+    text-decoration: none;      
+    background-color: #333;     
+    color: #fff;                 
+    padding: 10px 25px;        
+    border-radius: 30px;         
+    font-weight: bold;           
+    margin-top: 15px;            
+    transition: all 0.3s ease;   
+    border: 2px solid #333;     
+}
+
+/* 設定滑鼠游標移上去時的變化 */
+.social a:hover {
+    background-color: transparent; 
+    color: #333;                  
+    border: 2px solid #333;        
+    cursor: pointer;               
+    transform: translateY(-3px);   
+}
+
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #574c42; /* 棕色底 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    
+    /* 背景容器的動畫：
+       先等待圖片跑完 (delay 2.5s)，然後花 1s 慢慢消失 
+    */
+    animation: screenFadeOut 1s ease-in-out 2.5s forwards;
+}
+
+.splash-screen img {
+    width: 500px;
+    height: auto;
+    object-fit: contain;
+
+    /* 圖片的動畫：
+       執行 slideInDown (由上往下滑入)，花費 1秒 
+    */
+    animation: slideInDown 1s ease-out forwards;
+    opacity: 0; /* 預設先隱藏，讓動畫控制它出現 */
+}
+
+
+/* 1. 圖片由上往下掉落 + 漸現 */
+@keyframes slideInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px); /* 從上方 50px 的位置開始 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);     /* 回到正中間 */
+    }
+}
+
+/* 2. 整個遮罩背景消失 */
+@keyframes screenFadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden; /* 確保消失後滑鼠點得到下面的網頁 */
+    }
 }
