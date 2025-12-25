@@ -9,7 +9,7 @@ body {
 .container {
     max-width: 1000px;
     width: 90%;
-    margin: 0 auto;
+    margin: 50px auto;
     background-color: #ffffff;
     border-radius: 20px; 
     box-shadow: 0 10px 30px rgb(192, 174, 156); 
@@ -46,6 +46,18 @@ body {
     align-items: center;
     text-align: center;
     padding: 40px 40px;
+}
+
+.bio-text p {
+    margin: 4px 0; 
+    font-size: 14px;
+    color: #666;
+}
+
+
+.bio-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .works {
@@ -147,7 +159,16 @@ body {
     grid-area: w9; 
 }
 
-
+h3{
+    text-align: center;   
+    text-decoration:none;      
+    background-color:#574c42;     
+    color: #fff;                        
+    border-radius: 30px;         
+    font-weight: bold;           
+    margin: 15px 50px ;   
+    padding: 10px;               
+}
 .social a {
     display: inline-block;      
     text-decoration: none;      
@@ -182,10 +203,10 @@ body {
     align-items: center;
     z-index: 9999;
     
-    /* 背景容器的動畫：
+    /* 背景的動畫：
        先等待圖片跑完 (delay 2.5s)，然後花 1s 慢慢消失 
     */
-    animation: screenFadeOut 1s ease-in-out 2.5s forwards;
+    animation: screenFadeOut 1s ease-in-out 2s forwards;
 }
 
 .splash-screen img {
@@ -223,3 +244,157 @@ body {
         visibility: hidden; /* 確保消失後滑鼠點得到下面的網頁 */
     }
 }
+
+#myBtn {
+    display: none; /* 預設隱藏 */
+    position: fixed; /* 固定位置，不隨卷軸移動 */
+    bottom: 30px; /* 距離底部 30px */
+    right: 30px;  /* 距離右邊 30px */
+    z-index: 99;  
+    border: none;
+    outline: none;
+    
+    /* 按鈕外觀 */
+    background-color: #ffffff; 
+    color: #574c42; 
+    
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* 變成正圓形 */
+    font-size: 18px; /* 箭頭大小 */
+    
+    /* 陰影讓按鈕浮起來 */
+    box-shadow: 0 4px 10px rgb(192, 174, 156);
+    
+    /* 動畫過渡 */
+    transition: all 0.3s ease;
+}
+
+#myBtn:hover {
+    background-color: #f0f0f0; /* 滑鼠移上去稍微變灰 */
+    transform: translateY(-5px); /* 輕微上浮效果 */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* --- 1. 作品懸停互動效果 --- */
+.work2-item {
+    position: relative; /* 讓遮罩可以定位 */
+    cursor: pointer;    /* 滑鼠變手型 */
+    overflow: hidden;   /* 確保遮罩不跑出去 */
+}
+
+/* 黑色半透明遮罩 */
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(87, 76, 66, 0.85); /* 深棕色半透明 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 預設隱藏 */
+    transition: opacity 0.3s ease;
+}
+
+/* "點我查看" 文字樣式 */
+.hover-overlay span {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+/* 滑鼠移上去時，顯示遮罩 */
+.work2-item:hover .hover-overlay {
+    opacity: 1;
+}
+
+/* --- 2. 彈出視窗 (Modal) 樣式 --- */
+.modal {
+    display: none; /* 預設不顯示 */
+    position: fixed; 
+    z-index: 10000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.8); /* 背景變暗 */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 彈出視窗的內容卡片 */
+.modal-content {
+    background-color: #fff;
+    width: 90%;
+    max-width: 900px;
+    height: auto;
+    max-height: 90vh; /* 不超過螢幕高度 */
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden; /* 圓角 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* 左邊放圖片 */
+.modal-img-box {
+    flex: 1.5; /* 圖片佔比較大 */
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 或是 contain 看你喜歡填滿還是完整顯示 */
+}
+
+/* 右邊放文字 */
+.modal-info-box {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    overflow-y: auto; /* 文字太多可以捲動 */
+}
+
+.modal-info-box h2 {
+    color: #574c42; /* 深棕色標題 */
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.modal-info-box p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* 關閉按鈕 (X) */
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #fff; /* 在深色背景上顯示白色 */
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #bbb;
+}
+
